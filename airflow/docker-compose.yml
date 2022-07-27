@@ -21,6 +21,8 @@ x-depends-on:
       condition: service_completed_successfully
 
 services:
+  
+
   postgres:
     image: lmmdock/postgres-multi
     container_name: postgres
@@ -32,10 +34,19 @@ services:
       retries: 5
     env_file:
       - .env
+  
+  mysql:
+    image: mysql:5.7
+    container_name: mysql_db
+    ports:
+      - "32000:3306"
+    
+    env_file:
+      - .env
 
   scheduler:
     <<: *common
-    # <<: *depends-on
+    <<: *depends-on
     container_name: airflow-scheduler
     command: scheduler
     restart: on-failure
@@ -44,7 +55,7 @@ services:
 
   webserver:
     <<: *common
-    # <<: *depends-on
+    <<: *depends-on
     container_name: airflow-webserver
     restart: always
     command: webserver
@@ -69,5 +80,5 @@ services:
 
 networks:
   default:
-    external:
-      name: dwh-network
+    internal: true
+    name: dwh-network
