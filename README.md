@@ -53,7 +53,6 @@ Make sure you have docker installed on local machine.
    activate and trigger all the dags
    <!-- ``` -->
 
-
 4. Access dbt
 
    <!-- ```JS -->
@@ -80,18 +79,6 @@ Make sure you have docker installed on local machine.
 - [Redash basics][redash-basics]
 - [Hosting dbt docs][hosting-dbt-docs]
   
-   ```JS
-   Navigate to `http://localhost:5000/` on the browser
-   Login and use your created user on analytics databse to connect to your databse
-   ```
-
-6. Access Superset dashboard
-
-   ```JS
-   Navigate to `http://localhost:8088/` on the browser
-   use `root` for username
-   use `roor` for password
-
 <!-- LICENSE -->
 ## License
 
@@ -126,7 +113,6 @@ Made with [contrib.rocks](https://contrib.rocks).
 [superset-site]: https://superset.apache.org/
 [docker-install-guide]: https://docs.docker.com/engine/install/
 [docker-compose-install-guide]: https://docs.docker.com/compose/install/compose-plugin/#installing-compose-on-linux-systems
-
 
 [local-dbt]: http://localhost:8080/
 [local-airflow]: http://localhost:80801
