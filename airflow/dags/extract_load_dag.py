@@ -9,7 +9,7 @@ from docker.types import Mount
      start_date=datetime.now(),
      schedule_interval='@hourly',
      catchup=False)
-def docker_dag():
+def el_docker_dag():
     start_dag = DummyOperator(
         task_id='start_dag'
         )
@@ -26,7 +26,7 @@ def docker_dag():
         mounts=[
             Mount(
                 target='/scripts/data', 
-                source='/home/henok/dev-env/10academy/week-11/data-warehouse-dbt-airflow-postgress/data', 
+                source='/home/henok/dev-env/10academy/week-12/data-warehouse-migration-superset/data', 
                 type="bind") # https://stackoverflow.com/questions/64947706/mounting-directories-using-docker-operator-on-airflow-is-not-working
             ],
 
@@ -35,4 +35,4 @@ def docker_dag():
 
 
 
-dag = docker_dag()
+dag = el_docker_dag()
