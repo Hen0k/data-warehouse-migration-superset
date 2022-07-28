@@ -22,7 +22,6 @@ x-depends-on:
 
 services:
   
-
   postgres:
     image: lmmdock/postgres-multi
     container_name: postgres
@@ -40,7 +39,10 @@ services:
     container_name: mysql_db
     ports:
       - "32000:3306"
-    
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "airflow"]
+      interval: 5s
+      retries: 5
     env_file:
       - .env
 
@@ -80,5 +82,5 @@ services:
 
 networks:
   default:
-    internal: true
-    name: dwh-network
+    external:
+      name: dwh-network
