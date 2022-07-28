@@ -1,8 +1,9 @@
+from importlib.metadata import metadata
 import os
 from pprint import pprint
 from traceback import print_exc
 import pandas as pd
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, MetaData
 from sqlalchemy import text
 from sqlalchemy import inspect
 from dotenv import load_dotenv
@@ -76,4 +77,12 @@ def get_trajectories():
 
 
 if __name__=="__main__":
-    print(get_table_names())
+
+    # metadata = MetaData(bind=ENGINE)
+    # metadata.reflect()
+    metadata = MetaData()
+    print(metadata.tables)
+
+    # reflect db schema to MetaData
+    metadata.reflect(bind=ENGINE)
+    print(metadata.tables)
